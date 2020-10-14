@@ -1,4 +1,4 @@
-module ScaffoldCli
+module github.com/Benknightdark/ScaffoldCli
 
 go 1.15
 
