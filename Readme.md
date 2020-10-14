@@ -19,5 +19,5 @@ ScaffoldCli  \
 ```
 - 查看指令用法
 ```
-ScaffoldCli -
+ScaffoldCli -h
 ```
