@@ -151,8 +151,27 @@ func create_table_struct() {
 			pa.Module = module
 			pa.TableName = table_info["TABLE_NAME"]
 			pa.TableSchema = table_info["TABLE_SCHEMA"]
-			t := template.Must(template.ParseGlob("templates/*.tmpl"))
-			template.Must(t.ParseGlob("templates/db-model.tmpl"))
+			// t := template.Must(template.ParseGlob("templates/*.tmpl"))
+			// template.Must(t.ParseGlob("templates/db-model.tmpl"))
+
+			t := template.Must(template.New("").Parse(`package {{.Module}} 		
+			import (
+					"gorm.io/gorm"
+					{{if .ImportUUID -}}
+					"{{.ImportUUID}}"
+					{{- end}}
+			)
+			type {{.TableName}} struct {
+				{{range .ColData -}}
+					{{ .ColName }}  {{ .DataType }}  {{.Annotation -}}
+				{{- end}}				
+			}
+			// 取得table (func名稱設成首字大寫，才能讓外部程式使用)
+			func Get{{.TableName}}() func(db *gorm.DB) *gorm.DB {
+				return func(db *gorm.DB) *gorm.DB {
+					return db.Table("{{.TableSchema}}.{{.TableName}}")
+					}
+			}`))
 			//time.Sleep(100 * time.Millisecond)
 
 			println(table_info["TABLE_NAME"])
