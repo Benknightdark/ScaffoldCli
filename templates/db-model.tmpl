@@ -1,0 +1,18 @@
+package {{.Module}} 		
+import (
+		"gorm.io/gorm"
+        {{if .ImportUUID -}}
+		"{{.ImportUUID}}"
+        {{- end}}
+)
+type {{.TableName}} struct {
+    {{range .ColData -}}
+        {{ .ColName }}  {{ .DataType }}  {{.Annotation -}}
+    {{- end}}				
+}
+// 取得table (func名稱設成首字大寫，才能讓外部程式使用)
+func Get{{.TableName}}() func(db *gorm.DB) *gorm.DB {
+    return func(db *gorm.DB) *gorm.DB {
+        return db.Table("{{.TableSchema}}.{{.TableName}}")
+        }
+}
