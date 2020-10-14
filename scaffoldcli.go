@@ -201,7 +201,7 @@ func main() {
 
 	app := &cli.App{
 		Name:  "ScaffoldCli",
-		Usage: "fight the loneliness!",
+		Usage: "透過cli將mssql的table轉成golang的struct",
 		Flags: []cli.Flag{
 			&cli.StringFlag{
 				Name:        "path",
