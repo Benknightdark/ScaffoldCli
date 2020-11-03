@@ -188,7 +188,7 @@ func create_table_struct() {
 				}
 				// `gorm:"column:ModifiedDT"`
 				append_col_data := ColData{ColName: col_data[col]["COLUMN_NAME"], DataType: data_type,
-					Annotation: "`gorm:" + `"` + "column:" + col_data[col]["COLUMN_NAME"] + `"` + "`" + "111\n"}
+					Annotation: "`gorm:" + `"` + "column:" + col_data[col]["COLUMN_NAME"] + `"` + "`" + "\n"}
 				pa.ColData = append(pa.ColData, append_col_data)
 			}
 			pa.ImportUUID = import_uuid
