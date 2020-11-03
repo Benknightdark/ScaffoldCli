@@ -26,7 +26,7 @@ type ModelScaffold struct {
 type ColData struct {
 	ColName    string
 	DataType   string
-	Annotation string
+	Annotation template.HTML
 }
 
 func createfolder() {
@@ -187,8 +187,11 @@ func create_table_struct() {
 					import_uuid = `github.com/google/uuid`
 				}
 				// `gorm:"column:ModifiedDT"`
+				an := ("`gorm:" + "\"column:" + col_data[col]["COLUMN_NAME"] + "\"`" + "\n")
+				bb := template.HTML(an)
+
 				append_col_data := ColData{ColName: col_data[col]["COLUMN_NAME"], DataType: data_type,
-					Annotation: "`gorm:" + `"` + "\"column:" + col_data[col]["COLUMN_NAME"] + `\""` + "`" + "\n"}
+					Annotation: bb}
 				pa.ColData = append(pa.ColData, append_col_data)
 			}
 			pa.ImportUUID = import_uuid
