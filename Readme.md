@@ -8,7 +8,7 @@ go get -u github.com/Benknightdark/ScaffoldCli
 # 本機安裝
 git clone https://github.com/Benknightdark/ScaffoldCli
 cd ScaffoldCli
-go install
+go install #需使用gvm切換版本
 ```
 # 使用方式
 - 產生struct檔案指令
