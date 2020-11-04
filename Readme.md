@@ -1,9 +1,14 @@
 # ScaffoldCli
 - 透過cli將mssql的table轉成golang的struct
 - 使用Multi Threading提升處理速度
-# 安裝方式
-```
+# 安裝方式 
+``` bash
+# 遠端安裝
 go get -u github.com/Benknightdark/ScaffoldCli
+# 本機安裝
+git clone https://github.com/Benknightdark/ScaffoldCli
+cd ScaffoldCli
+go install
 ```
 # 使用方式
 - 產生struct檔案指令
